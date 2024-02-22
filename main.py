@@ -29,7 +29,8 @@ class myAudioSegment:
         return os.path.exists(filePath)
     def getFilesFromSuffix(self, suffix:list):
         files = []
-        for file in os.listdir(self.audioPath):
+        totalFiles = os.listdir(self.audioPath)
+        for file in totalFiles:
             # if file includes suffix:
             _suffix = [s.lower() for s in suffix]
             _file = file.lower()
@@ -92,9 +93,9 @@ class myAudioSegment:
     def time_to_seconds(self, time):
         return time.hour * 3600 + time.minute * 60 + time.second
     
-    def save(self, savePath):
+    def save(self, savePath=None):
         item = self.getItem('aacFile')
-        savePath = savePath if savePath else item.split(".")[0] + "_segement.mp3"
+        savePath = savePath if savePath else item.split(".")[0] + "_segement2.mp3"
         self.savePath = savePath
         #  保存音频文件
         
